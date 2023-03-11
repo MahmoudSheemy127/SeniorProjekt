@@ -49,6 +49,7 @@ void I2C_Start(u8 address)						/* I2C start wait function */
 
 s8 I2C_Master_Write(I2C_Handle *handle)
 {
+	handle->sendBuffCount = 0;
 	uint8_t status;
 	while(handle->sendBuffCount < handle->sendBuffLen)
 	{
@@ -129,6 +130,7 @@ s8 I2C_Slave_Write(I2C_Handle *handle)
 
 s8 I2C_Slave_Read(I2C_Handle *handle)
 {
+	handle->receiveBuffCount = 0;
 	TWCR = (1<<TWEN)|(1<<TWINT)|(1<<TWEA);
 	_delay_ms(10);
 	uint8_t status;
@@ -140,16 +142,18 @@ s8 I2C_Slave_Read(I2C_Handle *handle)
 		{
 			if(handle->receiveBuffCount < handle->receiveBuffLen)
 			{
-				TWDR = handle->receiveBuff[handle->receiveBuffCount];
+				//TWDR = handle->receiveBuff[handle->receiveBuffCount];
+				handle->receiveBuff[handle->receiveBuffCount] = TWDR;
 				handle->receiveBuffCount++;
 			}
 			else
 			{
-				return 1;
+				return 2;
 			}
 		}
 		else if(status != I2C_SLAVE_ACK_SLA_W_STATUS)
 		{
+			//return status;
 			return ERR;
 		}
 		else if(status == I2C_STOP_RECEIVED_STATUS)
