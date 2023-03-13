@@ -1,0 +1,9 @@
+GLOBAL_INTERRUPT_Prog.o GLOBAL_INTERRUPT_Prog.o:  \
+ ../GLOBAL_INTERRUPT_Prog.c ../GLOBAL_INTERRUPT_Register.h \
+  ../GLOBAL_INTERRUPT_Init.h ../STD_Types.h
+
+../GLOBAL_INTERRUPT_Register.h:
+
+../GLOBAL_INTERRUPT_Init.h:
+
+../STD_Types.h:

@@ -7,25 +7,19 @@ C_SRCS += \
 ../DIO_Prog.c \
 ../I2C_Prog.c \
 ../LCD_Prog.c \
-../USART.c \
-../main.c \
-../matrix_multiplier.c 
+../main.c 
 
 OBJS += \
 ./DIO_Prog.o \
 ./I2C_Prog.o \
 ./LCD_Prog.o \
-./USART.o \
-./main.o \
-./matrix_multiplier.o 
+./main.o 
 
 C_DEPS += \
 ./DIO_Prog.d \
 ./I2C_Prog.d \
 ./LCD_Prog.d \
-./USART.d \
-./main.d \
-./matrix_multiplier.d 
+./main.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
